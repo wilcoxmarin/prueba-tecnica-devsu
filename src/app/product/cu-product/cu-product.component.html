@@ -1,0 +1,83 @@
+<ng-container>
+  <div class="form">
+    <div class="form__header">
+      <font>
+        <h2>Formulario de Registro</h2>
+      </font>
+    </div>
+    <form [formGroup]="formProduct">
+      <div class="form__body">
+        <div>
+          <label for="id" class="input">
+            <font>
+              <p>ID</p>
+            </font>
+            <input type="text" id="id" formControlName="id" (blur)="verifyId()" [readOnly]="edit"  [ngClass]="{'wrong-input' : form['id'].status === 'INVALID' && submited}">
+          </label>
+          <p *ngIf="form['id']?.errors?.['required'] && submited" class="wrong-text"><small>El ID es requerido</small></p>
+            <p *ngIf="form['id']?.errors?.['minlength'] && submited" class="wrong-text"><small>El ID debe contener minimo 3 caracteres</small></p>
+            <p *ngIf="form['id']?.errors?.['maxlength'] && submited" class="wrong-text"><small>El ID debe contener maximo 10 caracteres</small></p>
+            <p *ngIf="form['id']?.errors?.['repit'] && submited" class="wrong-text"><small>El ID ya se encuentra creado</small></p>
+        </div>
+        <div>
+          <label for="name" class="input">
+            <font>
+              <p>Nombre</p>
+            </font>
+            <input type="text" id="name" formControlName="name" [ngClass]="{'wrong-input' : form['name'].status === 'INVALID' && submited}">
+          </label>
+          <p *ngIf="form['name']?.errors?.['required'] && submited" class="wrong-text"><small>El nombre es requerido</small></p>
+            <p *ngIf="form['name']?.errors?.['minlength'] && submited" class="wrong-text"><small>El nombre debe contener minimo 5 caracteres</small></p>
+            <p *ngIf="form['name']?.errors?.['maxlength'] && submited" class="wrong-text"><small>El nombre debe contener maximo 100 caracteres</small></p>
+        </div>
+        <div>
+          <label for="description" class="input">
+            <font>
+              <p>Descripción</p>
+            </font>
+            <input type="text" id="description" formControlName="description"  [ngClass]="{'wrong-input' : form['description'].status === 'INVALID' && submited}">
+          </label>
+          <p *ngIf="form['description']?.errors?.['required'] && submited" class="wrong-text"><small>La descripción es requerido</small></p>
+            <p *ngIf="form['description']?.errors?.['minlength'] && submited" class="wrong-text"><small>La descripción debe contener minimo 5 caracteres</small></p>
+            <p *ngIf="form['description']?.errors?.['maxlength'] && submited" class="wrong-text"><small>La v debe contener maximo 100 caracteres</small></p>
+        </div>
+        <div>
+          <label for="logo" class="input">
+            <font>
+              <p>Logo</p>
+            </font>
+            <input type="text" id="logo" formControlName="logo"  [ngClass]="{'wrong-input' : form['logo'].status === 'INVALID' && submited}">
+          </label>
+          <p *ngIf="form['logo']?.errors?.['required'] && submited" class="wrong-text"><small>El logo es requerido</small></p>
+        </div>
+        <div>
+          <label for="date_release" class="input">
+            <font>
+              <p>Fecha Liberación</p>
+            </font>
+            <input type="date" id="date_release" formControlName="date_release" (change)="validateDate()"   [ngClass]="{'wrong-input' : form['date_release'].status === 'INVALID' && submited}">
+          </label>
+            <p *ngIf="form['date_release']?.errors?.['required'] && submited" class="wrong-text"><small>La fecha liberación es requerido</small></p>
+            <p *ngIf="form['date_release']?.errors?.['date'] && submited" class="wrong-text"><small>La fecha liberación debe ser superior o igual a la fecha actual.</small></p>
+        </div>
+        <div>
+          <label for="date_revision" class="input">
+            <font>
+              <p>Fecha Revisión</p>
+            </font>
+            <input type="date" [readOnly]="true" id="date_revision" formControlName="date_revision"  [ngClass]="{'wrong-input' : form['date_revision'].status === 'INVALID' && submited}">
+          </label>
+          <p *ngIf="form['date_revision']?.errors?.['required'] && submited" class="wrong-text"><small>El fecha revisión es requerido</small></p>
+        </div>
+      </div>
+      <div class="form__footer">
+        <div class="form__footer__btn_content_clear">
+          <button type="button" (click)="clear()">Reiniciar</button>
+        </div>
+        <div class="form__footer__btn_content_send">
+          <button type="button" (click)="submit()">Enviar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-container>

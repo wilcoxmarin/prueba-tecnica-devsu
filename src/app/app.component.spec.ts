@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { LayoutComponent } from './layout/layout.component';
+import { environment } from 'src/environments/environment';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -9,7 +11,8 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        LayoutComponent
       ],
     }).compileComponents();
   });
@@ -26,10 +29,12 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('prueba-tecnica-devsu');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('prueba-tecnica-devsu app is running!');
+  it('Render', () => {
+    const component = TestBed.createComponent(AppComponent);
+    expect(component).toBeTruthy()
+  });
+  it('Render component son', () => {
+    const component = TestBed.createComponent(LayoutComponent);
+    expect(component).toBeTruthy()
   });
 });

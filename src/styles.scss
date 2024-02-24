@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+  margin: 0;
+}
+
+.list_option{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  & > li {
+    cursor: pointer;
+    padding: 10px 20px;
+    &:first-child{
+      border-bottom: 2px solid #EDEFF4;
+    }
+  }
+}
+
+.input{
+  padding: 0 10px;
+    & > font{
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      & > p{
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+    }
+    & > input[type=text], & > input[type=date]{
+      width: 100%;
+      padding: 10px 0 10px 5px;
+      border: 1px solid #8E8E90;
+      border-radius: 2px;
+      font-family: "Montserrat", sans-serif;
+      &:focus{
+        outline: 1px ridge #243565;
+      }
+      &:read-only{
+        background-color: #f6f6f6;
+      }
+    }
+}
+
+.wrong-input{
+  border: 1px solid #cc0000!important;
+}
+
+.wrong-text{
+  color: #cc0000;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: .8rem;
+}
+

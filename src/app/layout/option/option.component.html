@@ -1,0 +1,17 @@
+<ng-container>
+  <div class="options">
+    <button class="options__figure" #b (click)="toggle()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
+    <div class="options__content">
+      <div class="options__content__list">
+        <ul *ngIf="options.length>0">
+          <li *ngFor="let option of options;" (click)="option.command()">{{option.label}}</li>
+        </ul>
+        <ng-content select="[opt]"></ng-content>
+      </div>
+    </div>
+  </div>
+</ng-container>

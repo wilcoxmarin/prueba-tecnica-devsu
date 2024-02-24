@@ -1,0 +1,70 @@
+<ng-container>
+  <div class="table-product">
+    <div class="table-product__content">
+      <div  class="table-product__content__filter">
+        <div class="table-product__content__filter__input">
+          <input type="text" placeholder="Search..." [(ngModel)]="search" (keyup)="filterProduct()" >
+        </div>
+        <div class="table-product__content__filter__button">
+          <button (click)="newProduct()">Agregar</button>
+        </div>
+      </div>
+      <div class="table-product__content__table">
+        <table>
+          <thead>
+            <tr>
+              <th>Logo</th>
+              <th>Nombre del producto</th>
+              <th>Descripción</th>
+              <th>Fecha de liberación</th>
+              <th>Fecha de reestructuración</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td>
+                <app-logo-avatar [url]="product.logo" [name]="product.name"></app-logo-avatar>
+              </td>
+              <td>{{product.name}}</td>
+              <td>{{product.description}}</td>
+              <td>{{product.date_release}}</td>
+              <td>{{product.date_revision}}</td>
+              <td>
+                <app-option>
+                  <ng-container opt>
+                    <ul class="list_option">
+                      <li (click)="editProduct(product)">Editar</li>
+                      <li (click)="deleteProduct()">Eliminar</li>
+                    </ul>
+                  </ng-container>
+                </app-option>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-product__content__filter_rows">
+        <div class="table-product__content__filter_rows__paginate">
+          <div class="table-product__content__filter_rows__paginate__content">
+            <div class="table-product__content__filter_rows__paginate__content__btn_back" (click)="back()" *ngIf="pageNow !== 0"><<</div>
+            <div class="table-product__content__filter_rows__paginate__content__pages">
+              <ul>
+                <li *ngFor="let page of rows; let i = index;" [ngClass]="{'page-active': page === pageNow}" (click)="selectPagee(page)">{{page + 1}}</li>
+              </ul>
+            </div>
+            <div class="table-product__content__filter_rows__paginate__content__btn_next" (click)="next()" *ngIf="(pageNow + 1) !== rows.length">>></div>
+          </div>
+        </div>
+        <div class="table-product__content__filter_rows__text">
+          {{showRows}} Resultados
+        </div>
+        <div class="table-product__content__filter_rows__select">
+          <select [(ngModel)]="showRows" (change)="changeRows()">
+            <option *ngFor="let row of selectShowRows" [value]="row" >{{row}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

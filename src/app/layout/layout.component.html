@@ -1,0 +1,12 @@
+<app-header></app-header>
+<app-body>
+  <app-table-product *ngIf="!toggle" (create)="showCreate($event)"
+  (edit)="showEdit($event)" [products]="products"
+  (nextPage)="nextPage($event)"
+  (backPage)="backPage($event)"
+  (selectPage)="selectPage($event)"
+  (changeLongRows)="changeLongProducts($event)"
+  (filter)="filter($event)"
+  [rows]="totalPage"></app-table-product>
+  <app-cu-product *ngIf="toggle" (response)="response($event)" [product]="product"></app-cu-product>
+</app-body>
